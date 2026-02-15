@@ -1,0 +1,87 @@
+# Arducam Camera Configuration
+# Settings for 16MP USB autofocus camera
+
+camera:
+  # Camera device ID (Camera 1 is the Arducam)
+  device_id: 1
+  
+  # Backend preferences (try in order)
+  backends:
+    - "DSHOW"    # DirectShow (Windows)
+    - "MSMF"     # Media Foundation (Windows)
+    - "AUTO"     # Auto-detect
+
+# Resolution settings
+resolution:
+  # Preferred resolution for computer vision
+  width: 1920
+  height: 1080
+  
+  # Maximum supported resolution (16MP)
+  max_width: 4656
+  max_height: 3496
+  
+  # FPS settings
+  fps: 30
+
+# Focus settings
+focus:
+  # Disable hardware autofocus
+  auto_focus: false
+  
+  # Manual focus value (0-255, varies by camera)
+  # Typical values:
+  # 0 = infinity focus
+  # 50-100 = medium range
+  # 200+ = close focus
+  manual_focus: 100
+  
+  # Enable focus lock (prevent automatic changes)
+  focus_lock: true
+
+# Image quality settings
+image:
+  brightness: 0      # -100 to 100
+  contrast: 0        # -100 to 100
+  saturation: 0      # -100 to 100
+  sharpness: 0       # -100 to 100
+  gamma: 0          # -100 to 100
+  
+  # Exposure settings
+  auto_exposure: 1   # 0 = manual, 1 = auto, 3 = aperture priority
+  exposure: -6       # Exposure compensation (-13 to -1)
+  
+  # White balance
+  auto_wb: 1         # 0 = disabled, 1 = enabled
+  white_balance: 4000 # Color temperature (2000-6500K)
+
+# Advanced settings
+advanced:
+  # Buffer settings for stable video
+  buffer_size: 1
+  
+  # Timeout settings
+  connection_timeout: 5.0
+  frame_timeout: 1.0
+  
+  # Retry settings
+  max_retries: 3
+  retry_delay: 1.0
+
+# Windows-specific settings
+windows:
+  # Use DirectShow backend for better camera control
+  prefer_dshow: true
+  
+  # Disable camera auto-adjustment features
+  disable_auto_adjustment: true
+  
+  # Camera-specific settings for Arducam
+  arducam:
+    # Arducam 16MP specific settings
+    model: "B0191"  # Common Arducam 16MP model
+    
+    # Focus range for this model (may vary)
+    focus_min: 0
+    focus_max: 255
+    focus_step: 5
